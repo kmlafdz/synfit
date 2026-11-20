@@ -1,6 +1,7 @@
 {
   "projects": {
-    "default": "ai-areta",
+    "default": "synfitgym",
+    "synfit": "synfitgym",
     "asm": "aretasportmanagement"
   },
   "targets": {},

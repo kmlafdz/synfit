@@ -1,11 +1,11 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useRef } from "react";
 import { db } from "@/lib/firebase";
 import { collection, query, orderBy, limit, onSnapshot } from "firebase/firestore";
 import { useAuthStore } from "@/store/useAuthStore";
 import { useNotifications } from "@/hooks/useNotifications";
-import { usePathname } from "next/navigation";
+import { usePathname } from "@/lib/navigation";
 import { useFcm } from "@/hooks/useFcm";
 
 export function NotificationProvider({ children }: { children: React.ReactNode }) {
@@ -86,22 +86,24 @@ export function NotificationProvider({ children }: { children: React.ReactNode }
       if (expiringSoonCount > 0) {
         const notifiedToday = sessionStorage.getItem('expiry_notified_today');
         if (!notifiedToday) {
-          sendNotification("Peringatan Membership", {
-            body: `${expiringSoonCount} member akan segera expired dalam 3 hari.`,
+          sendNotification("Pengingat Masa Aktif Member", {
+            body: `${expiringSoonCount} member keanggotaannya akan berakhir dalam 3 hari ke depan.`,
             tag: "expiry-alert"
           });
 
           // Trigger Push Notification for the whole team
           sendPushNotification({
-            title: "Peringatan Membership",
-            body: `${expiringSoonCount} member akan segera expired dalam 3 hari. Segera hubungi mereka!`,
+            title: "Pengingat Masa Aktif Member",
+            body: `${expiringSoonCount} member keanggotaannya akan berakhir dalam 3 hari ke depan. Siapkan tindak lanjut perpanjangan.`,
             topic: "staff-chat",
-            data: { url: "/dashboard" }
+            data: { url: "/admin/dashboard" }
           });
 
           sessionStorage.setItem('expiry_notified_today', 'true');
         }
       }
+    }, (error) => {
+      console.error("NotificationProvider members check expiry onSnapshot error:", error);
     });
 
     return () => {

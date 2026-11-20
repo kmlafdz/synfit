@@ -13,6 +13,15 @@ export interface Member {
   qr_token: string;
   verification_status: boolean;
   created_at: Date;
+  tinggi_badan?: number; // in cm
+  berat_badan?: number; // in kg
+  jenis_kelamin?: 'male' | 'female';
+  umur?: number;
+  target_fitness?: string;
+  email?: string;
+  email_verified?: boolean;
+  uid?: string;
+  must_change_password?: boolean;
 }
 
 export interface MemberCard {

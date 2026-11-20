@@ -77,7 +77,7 @@ export function LoadingScreen() {
               }}
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
             >
-              <img src="/logo.png" alt="Areta Logo" className="h-24 w-24 object-contain rounded-[2rem]" />
+              <img src="/logo.png" alt="SynFit Logo" className="h-24 w-24 object-contain rounded-[2rem]" />
             </motion.div>
           </motion.div>
         </div>
@@ -91,7 +91,7 @@ export function LoadingScreen() {
             className="flex flex-col gap-2"
           >
             <h2 className="text-4xl font-black heading-font tracking-[0.2em] text-white uppercase">
-              ARETA <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">SPORT</span>
+              SYN<span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">FIT</span>
             </h2>
             <p className="text-[10px] font-black text-gray-500 tracking-[0.4em] uppercase">Premium Fitness Management</p>
           </motion.div>

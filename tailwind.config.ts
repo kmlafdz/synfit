@@ -2,9 +2,8 @@ import type { Config } from "tailwindcss";
 
 const config: Config = {
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
@@ -44,6 +43,10 @@ const config: Config = {
       boxShadow: {
         'neon': '0 0 10px rgba(230, 57, 70, 0.5), 0 0 20px rgba(230, 57, 70, 0.3)',
         'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.37)',
+      },
+      fontFamily: {
+        sans: ["var(--font-inter)", "Inter", "sans-serif"],
+        heading: ["var(--font-outfit)", "Outfit", "sans-serif"],
       },
     },
   },

@@ -5,11 +5,11 @@ export class WhatsAppService {
   static async sendVerificationMessage(phone: string, token: string, name: string) {
     const link = `${process.env.NEXT_PUBLIC_APP_URL}/verify?token=${token}`;
     const message = `
-*ARETA SPORT FITNESS* 🏋️‍♂️
+*SynFit* 🏋️‍♂️
 Premium Gym Management
 
 Hello ${name},
-Welcome to Areta Sport! Please verify your registration by clicking the secure link below:
+Welcome to SynFit! Please verify your registration by clicking the secure link below:
 
 🔗 ${link}
 
@@ -47,9 +47,9 @@ Keep this link safe!
   static async sendExpiredReminder(phone: string, name: string, daysLeft: number) {
     let message = "";
     if (daysLeft > 0) {
-      message = `*REMINDER:* Your Areta Sport membership will expire in ${daysLeft} days. Renew now to keep your access!`;
+      message = `*REMINDER:* Your SynFit membership will expire in ${daysLeft} days. Renew now to keep your access!`;
     } else {
-      message = `*ALERT:* Your Areta Sport membership has expired. Your digital card is now invalid. Please renew at the receptionist.`;
+      message = `*ALERT:* Your SynFit membership has expired. Your digital card is now invalid. Please renew at the receptionist.`;
     }
 
     console.log(`Sending WA to ${phone}:`, message);

@@ -2,10 +2,10 @@ import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   appId: 'com.areta.sport',
-  appName: 'Areta Fitness',
-  webDir: 'out',
+  appName: 'SynFit',
+  webDir: 'dist',
   server: {
-    url: 'https://aretasportmanagement.web.app',
+    url: 'https://synfitgym.web.app',
     cleartext: true
   }
 };

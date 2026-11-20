@@ -1,0 +1,15 @@
+const { spawnSync } = require('child_process');
+const path = require('path');
+const root = path.resolve(__dirname, '..');
+const out = path.join(root, 'Video', 'SynFit_Promo_60s_19x6_60fps.mp4');
+const images = ['gym_bg.jpg','banner_1.png','banner_2.png','banner_3.png','banner_4.png','banner_tutor.png'];
+const copy = s => s.replace(/\\/g,'/').replace(/:/g,'\\:').replace(/'/g,"\\'");
+const title = ['SYNFIT','MASALAHNYA?','SOLUSI SYNFIT','FITUR LENGKAP','LEBIH DARI SEKADAR LATIHAN','ALURNYA MUDAH'];
+const sub = ['Fitness lebih terarah, mulai hari ini.','Latihan tidak konsisten. Progres sulit dipantau.','Satu aplikasi untuk target dan kebiasaan sehatmu.','Program latihan  |  Dashboard progres  |  Check-in','Personal. Terukur. Terhubung dengan ekosistem gym.','Daftar  >  Pilih target  >  Latihan  >  Check-in  >  Lihat progres'];
+const args = ['-y'];
+for (const image of images) args.push('-loop','1','-t','10','-i',path.join(root,'public',image));
+args.push('-stream_loop','-1','-i',path.join(root,'public','homepage_song.mp3'));
+const filters=[];
+for(let i=0;i<6;i++) filters.push(`[${i}:v]scale=1900:600:force_original_aspect_ratio=increase,crop=1900:600,eq=brightness=-0.12:saturation=1.08,drawbox=x=0:y=0:w=1900:h=600:color=black@0.48:t=fill,drawtext=fontfile=${copy('C:/Windows/Fonts/arialbd.ttf')}:text='${copy(title[i])}':fontcolor=0x7CFF6B:fontsize=72:x=90:y=150,drawtext=fontfile=${copy('C:/Windows/Fonts/arial.ttf')}:text='${copy(sub[i])}':fontcolor=white:fontsize=40:x=95:y=255,fade=t=in:st=0:d=.4,fade=t=out:st=9.6:d=.4,setpts=PTS-STARTPTS[v${i}]`);
+args.push('-filter_complex',filters.join(';')+';[v0][v1][v2][v3][v4][v5]concat=n=6:v=1:a=0,format=yuv420p[v]','-map','[v]','-map','6:a','-t','60','-r','60','-c:v','libx264','-preset','veryfast','-crf','22','-pix_fmt','yuv420p','-c:a','aac','-b:a','192k','-shortest','-movflags','+faststart',out);
+const r=spawnSync('ffmpeg',args,{stdio:'inherit'}); process.exit(r.status||0);

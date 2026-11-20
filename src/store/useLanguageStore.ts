@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
+import { useState, useEffect } from 'react';
 
 interface LanguageState {
   language: 'id' | 'en';
@@ -17,3 +18,17 @@ export const useLanguageStore = create<LanguageState>()(
     }
   )
 );
+
+export function useLanguage() {
+  const store = useLanguageStore();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  return {
+    language: (mounted ? store.language : 'id') as 'id' | 'en',
+    setLanguage: store.setLanguage,
+  };
+}

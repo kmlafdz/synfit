@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { Mail, ShieldCheck, Target, Users, Code, Server, User, ArrowLeft } from "lucide-react";
 import { useLanguageStore } from "@/store/useLanguageStore";
 import { translations } from "@/lib/translations";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/lib/navigation";
 
 export default function CreditsPage() {
   const { language } = useLanguageStore();
@@ -80,16 +80,16 @@ export default function CreditsPage() {
       <div className="flex-1 lg:pl-72 flex flex-col min-w-0">
         <Header />
         <main className="p-4 sm:p-10 flex-1 overflow-x-hidden space-y-10">
-          
+
           {/* Header section with back button */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-6"
           >
             <div className="space-y-1">
-              <button 
-                onClick={() => router.push("/settings")} 
+              <button
+                onClick={() => router.push("/admin/settings")}
                 className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest text-[#FF5A2C] hover:underline mb-2 transition-all"
               >
                 <ArrowLeft className="h-4 w-4" /> {language === 'id' ? "Kembali ke Pengaturan" : "Back to Settings"}
@@ -100,7 +100,7 @@ export default function CreditsPage() {
           </motion.div>
 
           {/* Banner section with group photo and intro */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
@@ -111,9 +111,9 @@ export default function CreditsPage() {
               <div className="lg:col-span-5 relative group">
                 <div className="absolute inset-0 bg-[#FF5A2C]/20 rounded-3xl blur-2xl opacity-50 group-hover:opacity-100 transition-opacity duration-500 -z-10" />
                 <div className="aspect-[4/3] rounded-3xl overflow-hidden border border-white/15 shadow-2xl relative">
-                  <img 
-                    src="/syntriad_team.jpg" 
-                    alt="SynTriad Team" 
+                  <img
+                    src="/syntriad_team.jpg"
+                    alt="SynTriad Team"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 no-invert contrast-[90%] saturate-[90%]"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent" />
@@ -129,10 +129,10 @@ export default function CreditsPage() {
                   <ShieldCheck className="h-5 w-5 text-[#FF5A2C]" />
                   <span className="text-[10px] font-black text-[#FF5A2C] uppercase tracking-widest">ABOUT THE PROJECT</span>
                 </div>
-                <h2 className="text-3xl font-black text-foreground uppercase heading-font tracking-tight">Areta Sport Fitness</h2>
+                <h2 className="text-3xl font-black text-foreground uppercase heading-font tracking-tight">SynFit</h2>
                 <div className="h-1 w-16 bg-[#FF5A2C] rounded-full shadow-[0_0_15px_rgba(255,90,44,0.5)]" />
                 <p className="text-gray-300 text-sm font-bold leading-relaxed opacity-90">
-                  Tim pengembang aplikasi <span className="text-white">Sistem Informasi Website Areta Sport Fitness</span> yang berfokus pada digitalisasi operasional gym, peningkatan efisiensi administrasi, serta penyediaan informasi bisnis secara real-time bagi pengelola.
+                  Tim pengembang aplikasi <span className="text-white">Sistem Informasi Website SynFit</span> yang berfokus pada digitalisasi operasional gym, peningkatan efisiensi administrasi, serta penyediaan informasi bisnis secara real-time bagi pengelola.
                 </p>
                 <p className="text-gray-400 text-xs font-semibold leading-relaxed opacity-75">
                   Aplikasi ini dikembangkan sebagai solusi atas proses operasional manual yang sebelumnya masih menggunakan pencatatan fisik untuk data member, pembayaran, presensi, hingga pelaporan aset dan alat gym. Dengan sistem ini, seluruh proses dapat dilakukan secara terintegrasi, lebih cepat, aman, dan terdokumentasi dengan baik.
@@ -142,7 +142,7 @@ export default function CreditsPage() {
           </motion.div>
 
           {/* Development Objectives */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
@@ -152,7 +152,7 @@ export default function CreditsPage() {
               <Target className="h-5 w-5 text-[#FF5A2C]" />
               <h2 className="text-xl font-black text-foreground heading-font uppercase tracking-tight">{language === 'id' ? "Tujuan Pengembangan Aplikasi" : "Development Objectives"}</h2>
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {objectives.map((obj, i) => (
                 <div key={i} className="flex gap-4 p-5 rounded-2xl glass border border-white/5 hover:border-[#FF5A2C]/20 transition-colors group">
@@ -176,21 +176,21 @@ export default function CreditsPage() {
               {teamMembers.map((member, i) => {
                 const Icon = member.icon;
                 return (
-                  <motion.div 
+                  <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3 + i * 0.1 }}
                     whileHover={{ y: -5 }}
-                    key={member.name} 
+                    key={member.name}
                     className="glass-card p-8 flex flex-col gap-6 relative group border border-white/5 hover:border-white/10 transition-all shadow-xl"
                   >
                     {/* Header profile info */}
                     <div className="flex justify-between items-start">
                       <div className="relative">
                         <div className="h-24 w-24 rounded-2xl border border-white/15 overflow-hidden shadow-xl bg-black/35 relative group-hover:border-[#FF5A2C]/30 transition-colors duration-500">
-                          <img 
-                            src={member.photo} 
-                            alt={member.name} 
+                          <img
+                            src={member.photo}
+                            alt={member.name}
                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 no-invert contrast-[90%] saturate-[90%]"
                           />
                         </div>
@@ -239,17 +239,17 @@ export default function CreditsPage() {
           </div>
 
           {/* Footer closing section */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6 }}
             className="glass-card p-8 lg:p-12 text-center shadow-xl max-w-4xl mx-auto"
           >
             <p className="text-gray-300 text-sm font-bold leading-relaxed max-w-2xl mx-auto">
-              Aplikasi <span className="text-white">Sistem Informasi Website Areta Sport Fitness</span> dikembangkan oleh <span className="text-[#FF5A2C] font-black uppercase">SynTriad Team</span> sebagai bentuk implementasi teknologi informasi dalam mendukung transformasi digital pada sektor layanan kebugaran. Diharapkan sistem ini mampu memberikan solusi yang efektif, efisien, dan berkelanjutan bagi pengelolaan operasional gym.
+              Aplikasi <span className="text-white">Sistem Informasi Website SynFit</span> dikembangkan oleh <span className="text-[#FF5A2C] font-black uppercase">SynTriad Team</span> sebagai bentuk implementasi teknologi informasi dalam mendukung transformasi digital pada sektor layanan kebugaran. Diharapkan sistem ini mampu memberikan solusi yang efektif, efisien, dan berkelanjutan bagi pengelolaan operasional gym.
             </p>
             <p className="text-[9px] font-black text-gray-500 uppercase tracking-widest mt-8">
-              © 2026 SynTriad Team. All Rights Reserved.
+              Â© 2026 SynTriad Team. All Rights Reserved.
             </p>
           </motion.div>
 

@@ -6,6 +6,8 @@ import { useAuthStore } from "@/store/useAuthStore";
 import { Capacitor } from "@capacitor/core";
 import { LocalNotifications } from "@capacitor/local-notifications";
 
+import { auth } from "@/lib/firebase";
+
 export function useNotifications() {
   const { notificationsEnabled } = useAuthStore();
 
@@ -100,11 +102,31 @@ export function useNotifications() {
 
   const sendPushNotification = useCallback(async (payload: { title: string; body: string; topic?: string; userIds?: string[]; data?: any }) => {
     try {
+      const reqHeaders: Record<string, string> = {
+        "Content-Type": "application/json",
+      };
+
+      try {
+        const idToken = await auth.currentUser?.getIdToken();
+        if (idToken) {
+          reqHeaders["Authorization"] = `Bearer ${idToken}`;
+        } else {
+          const rawMember = typeof window !== "undefined" ? localStorage.getItem("memberSession") : null;
+          if (rawMember) {
+            const memberObj = JSON.parse(rawMember);
+            if (memberObj.token) {
+              reqHeaders["Authorization"] = `Bearer ${memberObj.token}`;
+              reqHeaders["x-member-session-token"] = memberObj.token;
+            }
+          }
+        }
+      } catch (e) {
+        // proceed
+      }
+
       const response = await fetch("/api/notifications/send", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: reqHeaders,
         body: JSON.stringify(payload),
       });
       

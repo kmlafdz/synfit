@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "tertiary-fixed-dim": "#ffb68b", "primary-container": "#ff5e1e", "surface-variant": "#31353e", "on-error": "#690005", "surface-tint": "#ffb59d", "inverse-surface": "#dfe2ee", "secondary-container": "#00a572", "on-primary-fixed-variant": "#832700", "primary-fixed-dim": "#ffb59d", "surface-container-high": "#262a33", "error": "#ffb4ab", "on-surface": "#dfe2ee", "on-secondary": "#003824", "on-background": "#dfe2ee", "surface-container-lowest": "#0a0e16", "background": "#0f131c", "on-tertiary-fixed": "#321200", "surface-container-highest": "#31353e", "primary-fixed": "#ffdbd0", "on-tertiary": "#522300", "surface-container-low": "#181c24", "on-secondary-fixed": "#002113", "on-secondary-container": "#00311f", "surface-container": "#1c2028", "on-primary-fixed": "#390c00", "surface": "#0f131c", "on-primary-container": "#561600", "tertiary": "#ffb68b", "tertiary-fixed": "#ffdbc8", "on-surface-variant": "#e3beb3", "error-container": "#93000a", "secondary": "#4edea3", "on-secondary-fixed-variant": "#005236", "inverse-on-surface": "#2c3039", "outline-variant": "#5b4138", "surface-dim": "#0f131c", "on-error-container": "#ffdad6", "on-tertiary-container": "#4c1f00", "outline": "#aa897f", "on-primary": "#5d1900", "on-tertiary-fixed-variant": "#753400", "inverse-primary": "#ab3500", "tertiary-container": "#eb7000", "surface-bright": "#353942", "primary": "#ffb59d", "secondary-fixed": "#6ffbbe", "secondary-fixed-dim": "#4edea3" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-xl": "2rem", "space-xs": "0.25rem", "gutter-sm": "0.75rem", "space-sm": "0.5rem", "margin": "1rem", "space-2xl": "3rem", "margin-lg": "1.5rem", "space-md": "1rem", "gutter": "1rem", "space-lg": "1.5rem" }, "fontFamily": { "body-sm": ["Inter"], "title-lg": ["Plus Jakarta Sans"], "headline-md": ["Plus Jakarta Sans"], "body-lg": ["Inter"], "headline-lg": ["Plus Jakarta Sans"], "headline-xl": ["Plus Jakarta Sans"], "telemetry-num": ["Plus Jakarta Sans"], "title-md": ["Plus Jakarta Sans"], "headline-xl-mobile": ["Plus Jakarta Sans"], "body-md": ["Inter"], "label-sm": ["Plus Jakarta Sans"], "label-md": ["Plus Jakarta Sans"], "headline-sm": ["Plus Jakarta Sans"], "headline-lg-mobile": ["Plus Jakarta Sans"], "label-lg": ["Plus Jakarta Sans"] }, "fontSize": { "body-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "400"}], "title-lg": ["16px", {"lineHeight": "22px", "letterSpacing": "0em", "fontWeight": "700"}], "headline-md": ["20px", {"lineHeight": "28px", "letterSpacing": "-0.015em", "fontWeight": "700"}], "body-lg": ["16px", {"lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "400"}], "headline-lg": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "700"}], "headline-xl": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "800"}], "telemetry-num": ["32px", {"lineHeight": "36px", "letterSpacing": "-0.03em", "fontWeight": "800"}], "title-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "600"}], "headline-xl-mobile": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.025em", "fontWeight": "800"}], "body-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400"}], "label-sm": ["10px", {"lineHeight": "14px", "letterSpacing": "0.06em", "fontWeight": "700"}], "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "600"}], "headline-sm": ["18px", {"lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600"}], "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700"}], "label-lg": ["14px", {"lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "600"}] } } } }</script><style>@layer base{html,body{width:100vw;margin:0;padding:0;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}@keyframes pulse-subtle{0%,100%{transform:scale(1);box-shadow:0 0 24px -4px rgba(255,94,30,0.45);}50%{transform:scale(1.05);box-shadow:0 0 32px 0px rgba(255,94,30,0.7);}}.animate-pulse-coach{animation:pulse-subtle 2.5s infinite ease-in-out;}</style></head><body class="bg-surface text-on-surface font-body-md text-body-md flex flex-col min-h-screen relative overflow-x-hidden selection:bg-primary-container selection:text-white"><div class="pointer-events-none fixed top-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-primary-container/10 rounded-full blur-3xl -z-10"></div><header class="fixed top-0 inset-x-0 z-50 bg-surface/75 backdrop-blur-xl pt-safe shadow-[0_1px_8px_rgba(0,0,0,0.2)]"><div class="h-16 px-margin flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm"><img alt="SynFit Brand Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WyegqStnE8lYpvToB3HvYcJjHQnfi0f8Q8FinBR2rXl1_j82ODIaAMT0q15MKhI6EaF0qEya1OmcSylwwWEAIStlVgXHIK8s2bGKNzIAdivGw464pWQgWUoWfF3_3oygcMUdEUnveRC9ZiyKerbFSN1sv5slvSdEoW-jJqKJ39NtjtLmJo0VJxwQ4UbopoC0QMRzTcufGa2IZ_gw9SAEb-m5riuZRbKJhO8unlObjCn33Pc9HysNW-bj45"/><div class="flex flex-col"><span class="font-title-md text-title-md font-bold tracking-tight text-on-surface leading-none">SynFit</span><span class="font-label-sm text-label-sm text-primary uppercase tracking-wider leading-none mt-0.5">Keanggotaan</span></div></div><div class="flex items-center gap-space-xs"><button aria-label="Toggle Language and Theme" class="h-9 px-space-xs bg-surface-container/60 hover:bg-surface-container rounded-full flex items-center gap-1 text-on-surface-variant transition-colors"><span class="px-1.5 py-0.5 rounded-full bg-primary-container text-white font-label-sm text-label-sm">ID</span><span class="px-1 font-label-sm text-label-sm text-on-surface-variant">EN</span><span class="material-symbols-outlined text-[16px] ml-0.5 text-on-surface">dark_mode</span></button><button aria-label="Notifications" class="relative w-11 h-11 flex items-center justify-center text-on-surface-variant hover:text-on-surface rounded-full transition-colors"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-primary-container shadow-[0_0_8px_rgba(255,94,30,0.8)]"></span></button><div class="relative w-9 h-9 ml-1"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD46FPzojejPxb_-Enip2v4YU0EefpCMkyMHLb6NhkqI-2rz9CQIapypFRwMM1WqPzjG1qp7bRSbmBF6-6HtA9GBzZJVkX_fqbOiDwcShqod3IHkOs6TkaOl0NWt5ePL_1NvLMPNckIdrl_p-sF4erb8qTiDcgoZ6CH--AHttcuDh1BTHxkkc2Ylpfa_RDXyr4BLfS4hJP9hq0qgf3saGbWEBWutNVOB4reQOsPDgCrbpGUC7VdjHvi5Q"/><span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-secondary ring-2 ring-surface shadow-[0_0_6px_rgba(78,222,163,0.8)]"></span></div></div></div></header><main class="flex flex-col relative w-full pt-16 pb-28 bg-surface min-h-screen"><div class="flex flex-col w-full px-margin pb-10 gap-space-lg">
+<!-- TOP HEADER NOTIFICATION CHIP -->
+<div class="flex items-center justify-between bg-surface-container-low px-space-md py-space-sm rounded-xl shadow-md">
+<div class="flex items-center gap-space-sm min-w-0">
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary-container animate-pulse shadow-[0_0_8px_rgba(235,112,0,0.8)]"></span>
+<span class="font-label-md text-label-md text-on-surface truncate">Masa Aktif: <strong class="text-tertiary-container font-bold">5 Hari Tersisa</strong></span>
+</div>
+<span class="bg-tertiary-container/15 text-tertiary font-label-sm text-label-sm px-2.5 py-0.5 rounded-full uppercase tracking-wider font-bold">Perlu Perhatian</span>
+</div>
+<!-- DIGITAL MEMBERSHIP PASS (INTERACTIVE CARD) -->
+<section class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<h2 class="font-title-lg text-title-lg text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container text-[20px]">badge</span>
+        Kartu Digital VIP
+      </h2>
+<span class="font-label-sm text-label-sm text-secondary flex items-center gap-1 bg-secondary-container/20 px-2 py-0.5 rounded-full">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">verified</span> Active RFID
+      </span>
+</div>
+<!-- DIGITAL CARD CHASSIS -->
+<div class="relative w-full rounded-xl p-space-lg overflow-hidden bg-gradient-to-br from-surface-container-high via-surface-container to-surface-container-lowest shadow-[0_16px_36px_-8px_rgba(0,0,0,0.85)] select-none" id="vip-member-card">
+<!-- Ambient Carbon Texture & Holographic Ember Gleam -->
+<div class="absolute -right-16 -top-16 w-52 h-52 bg-primary-container/25 rounded-full blur-3xl pointer-events-none"></div>
+<div class="absolute -left-12 -bottom-12 w-48 h-48 bg-tertiary-container/15 rounded-full blur-2xl pointer-events-none"></div>
+<!-- Card Decorative Pattern Lines -->
+<div class="absolute inset-0 opacity-10 bg-[radial-gradient(#ff5e1e_1px,transparent_1px)] [background-size:14px_14px] pointer-events-none"></div>
+<!-- Top Row: Logo & Chip -->
+<div class="relative z-10 flex items-center justify-between mb-space-md">
+<div class="flex items-center gap-2.5">
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest p-1.5 shadow-sm flex items-center justify-center">
+<img alt="SynFit Brand Logo" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WyegqStnE8lYpvToB3HvYcJjHQnfi0f8Q8FinBR2rXl1_j82ODIaAMT0q15MKhI6EaF0qEya1OmcSylwwWEAIStlVgXHIK8s2bGKNzIAdivGw464pWQgWUoWfF3_3oygcMUdEUnveRC9ZiyKerbFSN1sv5slvSdEoW-jJqKJ39NtjtLmJo0VJxwQ4UbopoC0QMRzTcufGa2IZ_gw9SAEb-m5riuZRbKJhO8unlObjCn33Pc9HysNW-bj45"/>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface leading-none font-bold">SynFit</h3>
+<span class="font-label-sm text-label-sm text-primary tracking-widest uppercase">VIP Platinum</span>
+</div>
+</div>
+<!-- EMV Chip & NFC Waveform -->
+<div class="flex items-center gap-2">
+<!-- Metallic Chip Simulation -->
+<div class="w-9 h-7 rounded-sm bg-gradient-to-tr from-[#99794d] via-[#e5c38c] to-[#a38053] p-1 flex flex-col justify-between shadow-inner">
+<div class="w-full h-[1px] bg-surface-container-lowest/50"></div>
+<div class="w-full h-[1px] bg-surface-container-lowest/50"></div>
+</div>
+<!-- Contactless NFC Icon -->
+<span class="material-symbols-outlined text-on-surface-variant text-[22px] rotate-90 opacity-80">contactless</span>
+</div>
+</div>
+<!-- Center Row: Member Name & Access Tier -->
+<div class="relative z-10 my-space-sm">
+<div class="font-label-sm text-label-sm text-outline uppercase tracking-wider mb-0.5">Nama Anggota</div>
+<div class="font-headline-md text-headline-md text-on-surface font-extrabold tracking-tight">Rian Pratama</div>
+<div class="inline-flex items-center gap-1.5 mt-1 px-2.5 py-0.5 rounded-full bg-primary-container/20 text-primary font-label-md text-label-md">
+<span class="material-symbols-outlined text-[14px]">stars</span>
+          All-Club Platinum Access
+        </div>
+</div>
+<!-- Bottom Row: Card ID, Expiry, and Dynamic QR Token -->
+<div class="relative z-10 pt-space-sm flex items-end justify-between">
+<div class="flex flex-col gap-1">
+<div>
+<span class="font-label-sm text-label-sm text-outline block leading-tight">Nomor ID</span>
+<span class="font-title-md text-title-md text-on-surface font-mono tracking-wider">SF-2024-899120</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-outline block leading-tight">Masa Berlaku</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">15 Okt 2024 — 15 Nov 2025</span>
+</div>
+</div>
+<!-- Mini QR Code Graphic for Club Gate Turnstile -->
+<div class="flex flex-col items-center gap-1 bg-surface-container-highest/90 p-2 rounded-lg shadow-sm">
+<div class="w-12 h-12 bg-white p-1 rounded-sm flex items-center justify-center">
+<!-- Precise inline SVG QR Matrix Simulation -->
+<svg class="w-full h-full text-surface-container-lowest" fill="currentColor" viewbox="0 0 24 24">
+<path d="M2 2h7v7H2V2zm2 2v3h3V4H4zm9-2h7v7h-7V2zm2 2v3h3V4h-3zM2 13h7v7H2v-7zm2 2v3h3v-3H4zm11-2h2v2h-2v-2zm4 0h2v4h-2v-4zm-4 4h2v4h-2v-4zm4 2h2v2h-2v-2zm-7 2h2v2h-2v-2zM5 5h1v1H5V5zm11 0h1v1h-1V5zM5 16h1v1H5v-1z"></path>
+</svg>
+</div>
+<span class="font-label-sm text-[9px] text-outline uppercase tracking-tighter">Gate Tap</span>
+</div>
+</div>
+</div>
+<!-- Quick Action Buttons -->
+<div class="grid grid-cols-2 gap-space-sm mt-1">
+<button class="h-11 rounded-full bg-surface-container hover:bg-surface-container-high active:scale-[0.98] text-on-surface font-label-lg text-label-lg flex items-center justify-center gap-2 transition-all shadow-sm" id="btn-download-card">
+<span class="material-symbols-outlined text-[18px] text-primary">download</span>
+        Unduh PNG
+      </button>
+<button class="h-11 rounded-full bg-surface-container hover:bg-surface-container-high active:scale-[0.98] text-on-surface font-label-lg text-label-lg flex items-center justify-center gap-2 transition-all shadow-sm" id="btn-share-card">
+<span class="material-symbols-outlined text-[18px] text-primary">share</span>
+        Bagikan Kartu
+      </button>
+</div>
+</section>
+<!-- MEMBERSHIP METRIC DETAILS (BENTO GRID) -->
+<section class="grid grid-cols-2 gap-space-sm">
+<!-- Stat 1: Registered Date -->
+<div class="bg-surface-container-low p-space-md rounded-xl flex flex-col justify-between shadow-sm">
+<div class="flex items-center justify-between text-outline">
+<span class="font-label-sm text-label-sm uppercase">Mulai Bergabung</span>
+<span class="material-symbols-outlined text-[18px]">event_available</span>
+</div>
+<div class="mt-space-sm">
+<div class="font-title-lg text-title-lg text-on-surface">15 Okt 2023</div>
+<div class="font-body-sm text-body-sm text-outline mt-0.5">13 Bulan Loyal Member</div>
+</div>
+</div>
+<!-- Stat 2: Expiry & Urgency -->
+<div class="bg-surface-container-low p-space-md rounded-xl flex flex-col justify-between shadow-sm">
+<div class="flex items-center justify-between text-tertiary">
+<span class="font-label-sm text-label-sm uppercase font-bold">Jatuh Tempo</span>
+<span class="material-symbols-outlined text-[18px] text-tertiary-container">warning</span>
+</div>
+<div class="mt-space-sm">
+<div class="font-title-lg text-title-lg text-on-surface">15 Nov 2024</div>
+<div class="flex items-center gap-1.5 mt-0.5">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary-container"></span>
+<span class="font-label-sm text-label-sm text-tertiary-container font-semibold">Hampir Expired</span>
+</div>
+</div>
+</div>
+</section>
+<!-- SELF-SERVICE RENEWAL FLOW (INTERACTIVE 2-STEP MODULE) -->
+<section class="bg-surface-container-low rounded-xl p-space-md shadow-md flex flex-col gap-space-md relative overflow-hidden">
+<!-- Dynamic Step Indicator -->
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">Perpanjangan Mandiri</h3>
+<span class="font-body-sm text-body-sm text-outline">Perpanjang instan tanpa antre di front desk</span>
+</div>
+<div class="flex items-center gap-1.5 bg-surface-container px-2.5 py-1 rounded-full">
+<span class="w-2 h-2 rounded-full bg-primary-container" id="step-pill-1"></span>
+<span class="w-2 h-2 rounded-full bg-surface-variant" id="step-pill-2"></span>
+<span class="font-label-sm text-label-sm text-on-surface font-bold ml-1" id="step-label">Tahap 1/2</span>
+</div>
+</div>
+<!-- STAGE 1: PLAN SELECTION -->
+<div class="flex flex-col gap-space-sm transition-all duration-300" id="renewal-stage-1">
+<div class="font-label-md text-label-md text-on-surface-variant">Pilih Durasi Paket VIP:</div>
+<!-- Option 1: 1 Month -->
+<label class="relative flex items-center justify-between p-space-md rounded-xl bg-surface-container hover:bg-surface-container-high cursor-pointer transition-colors has-[:checked]:bg-primary-container/10">
+<input checked="" class="sr-only plan-radio" name="renewal_plan" type="radio" value="450000"/>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-title-lg text-title-lg text-on-surface">1 Bulan Platinum</span>
+<span class="bg-surface-variant text-on-surface font-label-sm text-label-sm px-2 py-0.5 rounded-full">Hemat 5%</span>
+</div>
+<span class="font-body-sm text-body-sm text-outline mt-0.5">Akses penuh seluruh cabang SynFit + Sauna</span>
+</div>
+<div class="text-right">
+<span class="font-title-lg text-title-lg text-primary font-bold">Rp 450.000</span>
+<span class="font-label-sm text-label-sm text-outline block">/bulan</span>
+</div>
+</label>
+<!-- Option 2: 3 Months (Recommended) -->
+<label class="relative flex items-center justify-between p-space-md rounded-xl bg-surface-container hover:bg-surface-container-high cursor-pointer transition-colors has-[:checked]:bg-primary-container/10">
+<div class="absolute -top-2.5 right-4 bg-primary-container text-white font-label-sm text-label-sm font-bold px-2 py-0.5 rounded-full shadow-md">
+          BEST VALUE
+        </div>
+<input class="sr-only plan-radio" name="renewal_plan" type="radio" value="1150000"/>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-title-lg text-title-lg text-on-surface">3 Bulan Platinum</span>
+<span class="bg-secondary-container/20 text-secondary font-label-sm text-label-sm px-2 py-0.5 rounded-full">+1 Free PT</span>
+</div>
+<span class="font-body-sm text-body-sm text-outline mt-0.5">Gratis 1 sesi Private Trainer &amp; Locker VIP</span>
+</div>
+<div class="text-right">
+<span class="font-title-lg text-title-lg text-primary font-bold">Rp 1.150.000</span>
+<span class="font-label-sm text-label-sm text-outline line-through block">Rp 1.350.000</span>
+</div>
+</label>
+<!-- Continue to Stage 2 CTA -->
+<button class="mt-space-xs w-full h-12 rounded-full bg-primary-container hover:opacity-95 active:scale-[0.99] text-white font-label-lg text-label-lg font-bold flex items-center justify-center gap-2 shadow-[0_4px_16px_rgba(255,94,30,0.4)] transition-all" id="btn-goto-step-2">
+        Lanjut ke Pembayaran QRIS
+        <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</div>
+<!-- STAGE 2: QRIS PAYMENT & PROOF UPLOAD -->
+<div class="hidden flex-col gap-space-md transition-all duration-300" id="renewal-stage-2">
+<!-- Back button -->
+<button class="self-start text-on-surface-variant hover:text-on-surface flex items-center gap-1 font-label-md text-label-md" id="btn-back-step-1">
+<span class="material-symbols-outlined text-[16px]">arrow_back</span> Ubah Pilihan Paket
+      </button>
+<!-- QRIS Display Card -->
+<div class="bg-surface-container rounded-xl p-space-md flex flex-col items-center text-center">
+<div class="flex items-center justify-between w-full mb-space-sm">
+<div class="flex items-center gap-1.5">
+<span class="font-title-md text-title-md text-on-surface font-bold">QRIS Standar Nasional</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline">NMID: ID1020039201992</span>
+</div>
+<!-- Simulated Official QR Code Area -->
+<div class="p-3 bg-white rounded-xl shadow-lg relative my-1">
+<svg class="w-44 h-44 text-surface-container-lowest" fill="currentColor" viewbox="0 0 100 100">
+<!-- Position Detection Patterns -->
+<rect fill="#000" height="28" width="28" x="5" y="5"></rect>
+<rect fill="#fff" height="20" width="20" x="9" y="9"></rect>
+<rect fill="#000" height="12" width="12" x="13" y="13"></rect>
+<rect fill="#000" height="28" width="28" x="67" y="5"></rect>
+<rect fill="#fff" height="20" width="20" x="71" y="9"></rect>
+<rect fill="#000" height="12" width="12" x="75" y="13"></rect>
+<rect fill="#000" height="28" width="28" x="5" y="67"></rect>
+<rect fill="#fff" height="20" width="20" x="9" y="71"></rect>
+<rect fill="#000" height="12" width="12" x="13" y="75"></rect>
+<!-- Center stylized brand marker -->
+<rect fill="#ff5e1e" height="16" rx="3" width="16" x="42" y="42"></rect>
+<!-- Data modules mockup -->
+<rect fill="#000" height="6" width="6" x="38" y="10"></rect>
+<rect fill="#000" height="6" width="6" x="50" y="8"></rect>
+<rect fill="#000" height="6" width="10" x="40" y="22"></rect>
+<rect fill="#000" height="10" width="6" x="54" y="24"></rect>
+<rect fill="#000" height="6" width="8" x="8" y="38"></rect>
+<rect fill="#000" height="8" width="8" x="22" y="42"></rect>
+<rect fill="#000" height="6" width="12" x="10" y="52"></rect>
+<rect fill="#000" height="8" width="8" x="68" y="40"></rect>
+<rect fill="#000" height="6" width="10" x="82" y="38"></rect>
+<rect fill="#000" height="6" width="14" x="74" y="52"></rect>
+<rect fill="#000" height="8" width="10" x="38" y="68"></rect>
+<rect fill="#000" height="12" width="8" x="52" y="74"></rect>
+<rect fill="#000" height="6" width="12" x="42" y="88"></rect>
+<rect fill="#000" height="12" width="6" x="66" y="68"></rect>
+<rect fill="#000" height="8" width="16" x="76" y="78"></rect>
+<rect fill="#000" height="6" width="12" x="70" y="90"></rect>
+</svg>
+</div>
+<div class="mt-space-sm flex items-center gap-2">
+<span class="font-label-md text-label-md text-on-surface-variant">Total Tagihan:</span>
+<span class="font-headline-sm text-headline-sm text-primary font-extrabold" id="qris-nominal-tag">Rp 450.000</span>
+</div>
+<p class="font-body-sm text-body-sm text-outline mt-1">Dapat di-scan via BCA, GoPay, OVO, Dana, ShopeePay &amp; Livin</p>
+</div>
+<!-- Drag & Drop / File Receipt Upload -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface">Unggah Bukti Struk Pembayaran:</label>
+<div class="bg-surface-container hover:bg-surface-container-high rounded-xl p-space-lg flex flex-col items-center justify-center text-center cursor-pointer transition-colors shadow-inner" id="dropzone">
+<span class="material-symbols-outlined text-[32px] text-primary mb-1">cloud_upload</span>
+<span class="font-title-md text-title-md text-on-surface" id="upload-status-text">Pilih file atau seret foto struk ke sini</span>
+<span class="font-body-sm text-body-sm text-outline mt-0.5">Format JPG, PNG, atau PDF (Maks. 5MB)</span>
+<input accept="image/*,.pdf" class="hidden" id="file-receipt" type="file"/>
+</div>
+</div>
+<!-- Confirmation Submission Button -->
+<button class="w-full h-12 rounded-full bg-secondary hover:bg-secondary-fixed text-on-secondary font-label-lg text-label-lg font-bold flex items-center justify-center gap-2 shadow-[0_4px_16px_rgba(78,222,163,0.3)] transition-all" id="btn-submit-confirmation">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">send</span>
+        Kirim Konfirmasi ke Admin
+      </button>
+</div>
+</section>
+<!-- TRANSACTION & PAYMENT HISTORY -->
+<section class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<h3 class="font-title-lg text-title-lg text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-outline text-[20px]">receipt_long</span>
+        Riwayat Pembayaran
+      </h3>
+<span class="font-label-sm text-label-sm text-outline">Semua Transaksi</span>
+</div>
+<!-- History List Items -->
+<div class="flex flex-col gap-space-xs">
+<!-- Item 1: Last Renewal -->
+<div class="bg-surface-container-low p-space-md rounded-xl flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div>
+<div class="font-title-md text-title-md text-on-surface font-semibold">Platinum Membership 1 Tahun</div>
+<div class="font-body-sm text-body-sm text-outline">15 Okt 2023 • QRIS Otomatis</div>
+</div>
+</div>
+<div class="flex flex-col items-end gap-1">
+<span class="font-label-lg text-label-lg text-on-surface font-bold">Rp 4.200.000</span>
+<button class="flex items-center gap-1 text-primary hover:text-primary-container font-label-sm text-label-sm transition-colors" title="Unduh Invoice">
+<span class="material-symbols-outlined text-[14px]">download</span> Invoice
+          </button>
+</div>
+</div>
+<!-- Item 2: PT Session Add-on -->
+<div class="bg-surface-container-low p-space-md rounded-xl flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div>
+<div class="font-title-md text-title-md text-on-surface font-semibold">10x Personal Trainer Session</div>
+<div class="font-body-sm text-body-sm text-outline">02 Feb 2024 • Kartu Kredit Mandiri</div>
+</div>
+</div>
+<div class="flex flex-col items-end gap-1">
+<span class="font-label-lg text-label-lg text-on-surface font-bold">Rp 1.750.000</span>
+<button class="flex items-center gap-1 text-primary hover:text-primary-container font-label-sm text-label-sm transition-colors" title="Unduh Invoice">
+<span class="material-symbols-outlined text-[14px]">download</span> Invoice
+          </button>
+</div>
+</div>
+<!-- Item 3: Locker VIP Yearly -->
+<div class="bg-surface-container-low p-space-md rounded-xl flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div>
+<div class="font-title-md text-title-md text-on-surface font-semibold">Sewa Loker VIP Tahunan</div>
+<div class="font-body-sm text-body-sm text-outline">15 Okt 2023 • Virtual Account BCA</div>
+</div>
+</div>
+<div class="flex flex-col items-end gap-1">
+<span class="font-label-lg text-label-lg text-on-surface font-bold">Rp 600.000</span>
+<button class="flex items-center gap-1 text-primary hover:text-primary-container font-label-sm text-label-sm transition-colors" title="Unduh Invoice">
+<span class="material-symbols-outlined text-[14px]">download</span> Invoice
+          </button>
+</div>
+</div>
+</div>
+</section>
+<!-- TOAST NOTIFICATION CONTAINER (FOR ACTIONS) -->
+<div class="fixed bottom-24 left-1/2 -translate-x-1/2 z-50 pointer-events-none opacity-0 translate-y-4 transition-all duration-300 bg-surface-bright/95 text-on-surface px-space-md py-2.5 rounded-full shadow-2xl flex items-center gap-2" id="toast-notif">
+<span class="material-symbols-outlined text-secondary text-[20px]" id="toast-icon">check_circle</span>
+<span class="font-label-md text-label-md font-semibold" id="toast-message">Notifikasi</span>
+</div>
+</div>
+<!-- EMBEDDED SCRIPT FOR TAB 2 INTERACTIVITY -->
+<script>
+  (function () {
+    const stage1 = document.getElementById('renewal-stage-1');
+    const stage2 = document.getElementById('renewal-stage-2');
+    const btnGotoStep2 = document.getElementById('btn-goto-step-2');
+    const btnBackStep1 = document.getElementById('btn-back-step-1');
+    const stepPill1 = document.getElementById('step-pill-1');
+    const stepPill2 = document.getElementById('step-pill-2');
+    const stepLabel = document.getElementById('step-label');
+    const qrisNominalTag = document.getElementById('qris-nominal-tag');
+    const dropzone = document.getElementById('dropzone');
+    const fileReceipt = document.getElementById('file-receipt');
+    const uploadStatusText = document.getElementById('upload-status-text');
+    const btnSubmit = document.getElementById('btn-submit-confirmation');
+    const toast = document.getElementById('toast-notif');
+    const toastMsg = document.getElementById('toast-message');
+    const btnDownloadCard = document.getElementById('btn-download-card');
+    const btnShareCard = document.getElementById('btn-share-card');
+
+    function showToast(message, isSuccess = true) {
+      if (!toast) return;
+      toastMsg.textContent = message;
+      toast.classList.remove('opacity-0', 'translate-y-4');
+      toast.classList.add('opacity-100', 'translate-y-0');
+      setTimeout(() => {
+        toast.classList.remove('opacity-100', 'translate-y-0');
+        toast.classList.add('opacity-0', 'translate-y-4');
+      }, 2800);
+    }
+
+    // Step Transition: 1 to 2
+    if (btnGotoStep2) {
+      btnGotoStep2.addEventListener('click', () => {
+        const selectedPlan = document.querySelector('input[name="renewal_plan"]:checked');
+        const nominal = selectedPlan ? parseInt(selectedPlan.value, 10) : 450000;
+        qrisNominalTag.textContent = 'Rp ' + nominal.toLocaleString('id-ID');
+
+        stage1.classList.add('hidden');
+        stage2.classList.remove('hidden');
+        stage2.classList.add('flex');
+
+        stepPill1.classList.remove('bg-primary-container');
+        stepPill1.classList.add('bg-secondary');
+        stepPill2.classList.remove('bg-surface-variant');
+        stepPill2.classList.add('bg-primary-container');
+        stepLabel.textContent = 'Tahap 2/2';
+      });
+    }
+
+    // Step Transition: Back to 1
+    if (btnBackStep1) {
+      btnBackStep1.addEventListener('click', () => {
+        stage2.classList.add('hidden');
+        stage2.classList.remove('flex');
+        stage1.classList.remove('hidden');
+
+        stepPill1.classList.remove('bg-secondary');
+        stepPill1.classList.add('bg-primary-container');
+        stepPill2.classList.remove('bg-primary-container');
+        stepPill2.classList.add('bg-surface-variant');
+        stepLabel.textContent = 'Tahap 1/2';
+      });
+    }
+
+    // File Upload Simulation
+    if (dropzone && fileReceipt) {
+      dropzone.addEventListener('click', () => fileReceipt.click());
+      fileReceipt.addEventListener('change', (e) => {
+        if (e.target.files && e.target.files[0]) {
+          uploadStatusText.textContent = 'Terpilih: ' + e.target.files[0].name;
+          showToast('File bukti struk berhasil dipilih');
+        }
+      });
+    }
+
+    // Submit Action
+    if (btnSubmit) {
+      btnSubmit.addEventListener('click', () => {
+        showToast('Konfirmasi perpanjangan terkirim ke WhatsApp Admin SynFit!');
+        setTimeout(() => {
+          stage2.classList.add('hidden');
+          stage2.classList.remove('flex');
+          stage1.classList.remove('hidden');
+          stepPill1.classList.add('bg-primary-container');
+          stepPill1.classList.remove('bg-secondary');
+          stepPill2.classList.add('bg-surface-variant');
+          stepPill2.classList.remove('bg-primary-container');
+          stepLabel.textContent = 'Tahap 1/2';
+        }, 1200);
+      });
+    }
+
+    // Download PNG Card Simulation (html2canvas mock)
+    if (btnDownloadCard) {
+      btnDownloadCard.addEventListener('click', () => {
+        showToast('Menyiapkan file kartu VIP SynFit PNG...');
+        setTimeout(() => {
+          showToast('Kartu keanggotaan berhasil diunduh!');
+        }, 800);
+      });
+    }
+
+    // Share Card Simulation
+    if (btnShareCard) {
+      btnShareCard.addEventListener('click', () => {
+        if (navigator.share) {
+          navigator.share({
+            title: 'SynFit Platinum VIP Member Card',
+            text: 'Membership SynFit Rian Pratama (SF-2024-899120)',
+            url: window.location.href,
+          }).catch(() => {});
+        } else {
+          showToast('Tautan kartu VIP disalin ke papan klip!');
+        }
+      });
+    }
+  })();
+</script></main><nav class="fixed bottom-0 inset-x-0 z-50 pb-safe bg-surface-container-lowest/80 backdrop-blur-2xl shadow-[0_-4px_24px_rgba(0,0,0,0.6)]" data-active-classes="text-primary font-bold"><div class="relative flex justify-around items-center h-20 px-space-xs"><a class="flex flex-col items-center justify-center min-w-[56px] h-12 text-on-surface-variant hover:text-on-surface transition-all gap-0.5" data-path="beranda" href="#"><span class="material-symbols-outlined text-[24px]">dashboard</span><span class="font-label-sm text-label-sm leading-none">Beranda</span></a><a aria-current="page" class="flex flex-col items-center justify-center min-w-[56px] h-12 transition-all gap-0.5 mr-6 text-primary font-bold" data-path="keanggotaan" href="#"><span class="material-symbols-outlined text-[24px]">badge</span><span class="font-label-sm text-label-sm leading-none">Kartu</span></a><div class="absolute left-1/2 -top-6 -translate-x-1/2 flex flex-col items-center pointer-events-auto"><a aria-label="AI Form Coach" class="w-14 h-14 rounded-full bg-gradient-to-tr from-primary-container via-[#ff7a3d] to-tertiary flex items-center justify-center text-white shadow-[0_8px_20px_rgba(255,94,30,0.45)] animate-pulse-coach active:scale-95 transition-transform" data-path="ai-coach" href="#"><span class="material-symbols-outlined text-[30px]">smart_toy</span></a><span class="font-label-sm text-label-sm text-primary font-bold mt-1 tracking-wider uppercase drop-shadow">AI Coach</span></div><a class="flex flex-col items-center justify-center min-w-[56px] h-12 text-on-surface-variant hover:text-on-surface transition-all gap-0.5 ml-6" data-path="chat" href="#"><span class="material-symbols-outlined text-[24px]">support_agent</span><span class="font-label-sm text-label-sm leading-none">Chat</span></a><a class="flex flex-col items-center justify-center min-w-[56px] h-12 text-on-surface-variant hover:text-on-surface transition-all gap-0.5" data-path="profil" href="#"><span class="material-symbols-outlined text-[24px]">account_circle</span><span class="font-label-sm text-label-sm leading-none">Profil</span></a></div></nav></body></html>

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { Search, Menu, User as UserIcon, LogOut, Settings, X as CloseX, Users, CreditCard, Dumbbell, ArrowUpRight, Loader2, LayoutDashboard, FileText, QrCode, Calendar, Wrench } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -7,7 +7,7 @@ import { useAuthStore } from "@/store/useAuthStore";
 import { useLanguageStore } from "@/store/useLanguageStore";
 import { translations } from "@/lib/translations";
 import { useState, useEffect, useRef } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/lib/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { auth, db } from "@/lib/firebase";
 import { signOut } from "firebase/auth";
@@ -16,7 +16,8 @@ import { DeleteConfirmModal } from "@/components/ui/delete-confirm-modal";
 import { cn } from "@/lib/utils";
 
 export function Header() {
-  const { toggleSidebar, theme, toggleTheme } = useUIStore();
+  const { toggleSidebar, adminTheme } = useUIStore();
+  const isDark = adminTheme === "dark";
   const { user, setUser } = useAuthStore();
   const { language, setLanguage } = useLanguageStore();
   const t = translations[language];
@@ -57,7 +58,7 @@ export function Header() {
     try {
       await signOut(auth);
       setUser(null);
-      router.replace("/login");
+      router.replace("/login-admin");
     } catch (error) {
       console.error("Logout failed:", error);
     }
@@ -77,16 +78,16 @@ export function Header() {
 
       // 1. Static Navigation Search
       const navItems = [
-        { name: t.dashboard, type: "page", href: "/dashboard", icon: LayoutDashboard },
-        { name: t.members, type: "page", href: "/members", icon: Users },
-        { name: t.equipment, type: "page", href: "/equipment", icon: Dumbbell },
-        { name: t.reports, type: "page", href: "/reports", icon: FileText },
-        { name: t.transactions, type: "page", href: "/transactions", icon: CreditCard },
-        { name: t.dailyCheckin, type: "page", href: "/scanner", icon: QrCode },
-        { name: t.monthlyCheckin, type: "page", href: "/monthly-checkin", icon: Calendar },
-        { name: t.spk, type: "page", href: "/spk", icon: Wrench },
-        { name: t.expenses, type: "page", href: "/expenses", icon: CreditCard },
-        { name: t.settings, type: "page", href: "/settings", icon: Settings },
+        { name: t.dashboard, type: "page", href: "/admin/dashboard", icon: LayoutDashboard },
+        { name: t.members, type: "page", href: "/admin/members", icon: Users },
+        { name: t.equipment, type: "page", href: "/admin/equipment", icon: Dumbbell },
+        { name: t.reports, type: "page", href: "/admin/reports", icon: FileText },
+        { name: t.transactions, type: "page", href: "/admin/transactions", icon: CreditCard },
+        { name: t.dailyCheckin, type: "page", href: "/admin/scanner", icon: QrCode },
+        { name: t.monthlyCheckin, type: "page", href: "/admin/monthly-checkin", icon: Calendar },
+        { name: t.spk, type: "page", href: "/admin/spk", icon: Wrench },
+        { name: t.expenses, type: "page", href: "/admin/expenses", icon: CreditCard },
+        { name: t.settings, type: "page", href: "/admin/settings", icon: Settings },
       ];
 
       const matchedPages = navItems.filter(p => p.name.toLowerCase().includes(queryLower));
@@ -135,17 +136,23 @@ export function Header() {
           </Button>
         </div>
         
-        <div className="flex flex-1 items-center justify-between gap-x-4 lg:gap-x-6 glass-dark rounded-[2rem] px-4 sm:px-6 py-2 border border-border shadow-2xl">
+        <div className={`flex flex-1 items-center justify-between gap-x-4 lg:gap-x-6 glass-dark rounded-[2rem] px-4 sm:px-6 py-2 border shadow-2xl transition-all ${
+          isDark ? "border-orange-500/25 shadow-orange-950/20" : "border-blue-500/25 shadow-blue-900/10"
+        }`}>
           <div className="flex flex-1 max-w-md group relative" ref={searchRef}>
             <form onSubmit={handleSearch} className="w-full">
               <div className="relative w-full">
-                <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-500 group-focus-within:text-[#FF5A2C] transition-colors" />
+                <Search className={`absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-500 transition-colors ${
+                  isDark ? "group-focus-within:text-[#FF5A2C]" : "group-focus-within:text-blue-600"
+                }`} />
                 <input
                   type="text"
                   value={searchQuery}
                   onChange={(e) => handleGlobalSearch(e.target.value)}
                   placeholder={t.search}
-                  className="w-full bg-secondary border border-border rounded-2xl py-2.5 pl-12 pr-4 text-sm text-foreground placeholder:text-gray-500 focus:outline-none focus:border-[#FF5A2C]/30 transition-all"
+                  className={`w-full bg-secondary border rounded-2xl py-2.5 pl-12 pr-4 text-sm text-foreground placeholder:text-gray-500 focus:outline-none transition-all ${
+                    isDark ? "border-white/10 focus:border-[#FF5A2C]/50" : "border-gray-200 focus:border-blue-500/50"
+                  }`}
                 />
               </div>
             </form>
@@ -168,7 +175,7 @@ export function Header() {
                         {searchResults.map((res) => (
                           <button 
                             key={res.id || res.href} 
-                            onClick={() => { router.push(res.href || `/${res.type === 'members' ? 'members' : res.type === 'equipment' ? 'equipment' : 'transactions'}`); setSearchQuery(""); }}
+                            onClick={() => { router.push(res.href || `/admin/${res.type === 'members' ? 'members' : res.type === 'equipment' ? 'equipment' : 'transactions'}`); setSearchQuery(""); }}
                             className="w-full flex items-center justify-between p-4 hover:bg-white/5 rounded-2xl transition-all group text-left"
                           >
                             <div className="flex items-center gap-4">
@@ -242,7 +249,7 @@ export function Header() {
 
                   <div className="px-2 py-2">
                     <button 
-                      onClick={() => { router.push("/settings"); setIsProfileOpen(false); }}
+                      onClick={() => { router.push("/admin/settings"); setIsProfileOpen(false); }}
                       className="w-full flex items-center gap-4 px-4 py-3 text-sm font-bold text-gray-400 hover:text-foreground hover:bg-white/5 rounded-2xl transition-all group"
                     >
                       <div className="p-2 bg-white/5 rounded-xl group-hover:bg-[#FF5A2C]/10 transition-colors">

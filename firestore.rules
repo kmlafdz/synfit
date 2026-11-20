@@ -1,0 +1,117 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Helper functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    // 1. Users collection (staff/admin records)
+    match /users/{userId} {
+      // Allow read to support staff lookup prior to sign-in on static hosting
+      allow read: if true;
+      allow write: if isAuthenticated();
+    }
+
+    // 2. Members collection (membership records)
+    // NOTE: Once member login migrates to Firebase Auth, restrict read/update to request.auth.uid == memberId || isAuthenticated()
+    match /members/{memberId} {
+      allow read, create, update: if true;
+      allow delete: if isAuthenticated();
+    }
+
+    // 3. Member accounts (member credentials for logging in)
+    // NOTE: Prevent unauthenticated deletion; migrate member auth to Firebase Auth to lock read/write completely
+    match /member_accounts/{accountId} {
+      allow read, create, update: if true;
+      allow delete: if isAuthenticated();
+    }
+
+    // 4. Registrations collection (signup and renewal requests)
+    match /registrations/{regId} {
+      allow read: if true;
+      allow create: if request.resource.data.keys().hasAll(['nama', 'nomor_whatsapp']);
+      allow update, delete: if isAuthenticated();
+    }
+
+    // 5. Configs collection (general gym configuration settings)
+    match /configs/{configId} {
+      allow read: if true;
+      allow write: if isAuthenticated();
+    }
+
+    // 6. Checkins collection (GPS checkin/checkout sessions)
+    match /checkins/{checkinId} {
+      allow read, create, update: if true;
+      allow delete: if isAuthenticated();
+    }
+
+    // 7. Chats collection (staff internal chat room)
+    match /chats/{chatId} {
+      allow read, write: if isAuthenticated();
+    }
+
+    // 8. Member chats collection (direct messaging between member and gym)
+    match /member_chats/{chatId} {
+      allow read, create, update: if true;
+      allow delete: if isAuthenticated();
+    }
+
+    // 9. Notifications collection
+    match /notifications/{notifId} {
+      allow read: if true;
+      allow write: if isAuthenticated();
+    }
+
+    // 10. Equipment collection (gym inventory)
+    match /equipment/{equipId} {
+      allow read: if true;
+      allow write: if isAuthenticated();
+    }
+
+    // 11. Transactions collection (financial ledger logs)
+    match /transactions/{transId} {
+      allow read: if isAuthenticated();
+      allow create: if true;
+      allow update, delete: if isAuthenticated();
+    }
+
+    // 12. Payment orders collection
+    match /payment_orders/{orderId} {
+      allow read: if isAuthenticated();
+      allow create: if request.resource.data.keys().hasAll(['amount', 'status']);
+      allow update, delete: if isAuthenticated();
+    }
+
+    // 13. Workout sessions collection (AI Form Coach history)
+    match /workout_sessions/{sessionId} {
+      allow read, create, update: if true;
+      allow delete: if isAuthenticated();
+    }
+
+    // 14. Real-time typing status between members and staff
+    match /typing_status/{statusId} {
+      allow read, create, update: if true;
+      allow delete: if isAuthenticated();
+    }
+
+    // 15. Workout programs collection (Personal AI & Manual workout plans)
+    match /workout_programs/{programId} {
+      allow read, create, update: if true;
+      allow delete: if isAuthenticated();
+    }
+
+    // 16. Mading / Announcements collection
+    match /mading/{postId} {
+      allow read: if true;
+      allow write: if isAuthenticated();
+    }
+
+    // 17. Default Deny catch-all rule for any unspecified documents
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

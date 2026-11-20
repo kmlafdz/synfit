@@ -1,14 +1,14 @@
 "use client";
 
 import { useState, useEffect, Suspense } from "react";
-import { useSearchParams, useRouter } from "next/navigation";
+import { useSearchParams, useRouter } from "@/lib/navigation";
 import { Sidebar } from "@/components/layout/sidebar";
 import { Header } from "@/components/layout/header";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search, Users, Dumbbell, Receipt, ArrowRight, Loader2, CreditCard, LayoutDashboard, FileText } from "lucide-react";
 import { db } from "@/lib/firebase";
 import { collection, getDocs, query as fsQuery, where, limit } from "firebase/firestore";
-import Link from "next/link";
+import Link from "@/lib/navigation";
 import { useLanguageStore } from "@/store/useLanguageStore";
 import { translations } from "@/lib/translations";
 
@@ -122,11 +122,11 @@ function SearchResults() {
               </div>
               <div className="space-y-4">
                 {results.members.map(m => (
-                  <motion.div whileHover={{ y: -3 }} key={m.id} onClick={() => router.push("/members")} className="glass-card p-5 cursor-pointer group hover:border-blue-500/30 transition-all">
+                  <motion.div whileHover={{ y: -3 }} key={m.id} onClick={() => router.push("/admin/members")} className="glass-card p-5 cursor-pointer group hover:border-blue-500/30 transition-all">
                     <div className="flex justify-between items-center">
                       <div>
                         <p className="font-black text-foreground uppercase heading-font group-hover:text-blue-400 transition-colors">{m.nama || m.name}</p>
-                        <p className="text-[9px] font-bold text-gray-500 uppercase tracking-widest mt-1">{m.nomor_whatsapp || m.phone || "-"} • {m.membership_type || "Member"}</p>
+                        <p className="text-[9px] font-bold text-gray-500 uppercase tracking-widest mt-1">{m.nomor_whatsapp || m.phone || "-"} â€¢ {m.membership_type || "Member"}</p>
                       </div>
                       <ArrowRight className="h-4 w-4 text-gray-700 group-hover:text-foreground transition-all" />
                     </div>
@@ -148,11 +148,11 @@ function SearchResults() {
               </div>
               <div className="space-y-4">
                 {results.equipments.map(e => (
-                  <motion.div whileHover={{ y: -3 }} key={e.id} onClick={() => router.push("/equipment")} className="glass-card p-5 cursor-pointer group hover:border-orange-400/30 transition-all">
+                  <motion.div whileHover={{ y: -3 }} key={e.id} onClick={() => router.push("/admin/equipment")} className="glass-card p-5 cursor-pointer group hover:border-orange-400/30 transition-all">
                     <div className="flex justify-between items-center">
                       <div>
                         <p className="font-black text-foreground uppercase heading-font group-hover:text-orange-400 transition-colors">{e.nama || e.name}</p>
-                        <p className="text-[9px] font-bold text-gray-500 uppercase tracking-widest mt-1">{e.kategori || e.category} • {e.kondisi || e.condition}</p>
+                        <p className="text-[9px] font-bold text-gray-500 uppercase tracking-widest mt-1">{e.kategori || e.category} â€¢ {e.kondisi || e.condition}</p>
                       </div>
                       <ArrowRight className="h-4 w-4 text-gray-700 group-hover:text-foreground transition-all" />
                     </div>
@@ -174,11 +174,11 @@ function SearchResults() {
               </div>
               <div className="space-y-4">
                 {results.transactions.map(tr => (
-                  <motion.div whileHover={{ y: -3 }} key={tr.id} onClick={() => router.push("/transactions")} className="glass-card p-5 cursor-pointer group hover:border-teal-400/30 transition-all">
+                  <motion.div whileHover={{ y: -3 }} key={tr.id} onClick={() => router.push("/admin/transactions")} className="glass-card p-5 cursor-pointer group hover:border-teal-400/30 transition-all">
                     <div className="flex justify-between items-center">
                       <div>
                         <p className="font-black text-foreground uppercase heading-font group-hover:text-teal-400 transition-colors">{tr.member || tr.memberName || "Daily Visitor"}</p>
-                        <p className="text-[9px] font-bold text-gray-500 uppercase tracking-widest mt-1">{tr.type} • Rp {tr.amount?.toLocaleString('id-ID')}</p>
+                        <p className="text-[9px] font-bold text-gray-500 uppercase tracking-widest mt-1">{tr.type} â€¢ Rp {tr.amount?.toLocaleString('id-ID')}</p>
                       </div>
                       <ArrowRight className="h-4 w-4 text-gray-700 group-hover:text-foreground transition-all" />
                     </div>

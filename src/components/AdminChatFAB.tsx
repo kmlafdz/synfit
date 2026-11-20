@@ -1,24 +1,24 @@
-import { useState, useEffect, useRef } from "react";
+﻿import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MessageSquare, X, Maximize2, Send, Loader2, User } from "lucide-react";
 import { db } from "@/lib/firebase";
 import { collection, query, orderBy, limit, onSnapshot, addDoc, serverTimestamp } from "firebase/firestore";
 import { useAuthStore } from "@/store/useAuthStore";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter } from "@/lib/navigation";
 import { cn } from "@/lib/utils";
 import { format } from "date-fns";
 import { getDocs } from "firebase/firestore";
 
 const APP_TAGS = [
-  { label: "Dashboard", path: "/dashboard", icon: "📊" },
-  { label: "Members", path: "/members", icon: "👥" },
-  { label: "Equipment", path: "/equipment", icon: "🏋️" },
-  { label: "Reports", path: "/reports", icon: "📈" },
-  { label: "Scanner", path: "/scanner", icon: "🔍" },
-  { label: "Transactions", path: "/transactions", icon: "💰" },
-  { label: "SPK", path: "/spk", icon: "🔧" },
-  { label: "Settings", path: "/settings", icon: "⚙️" },
-  { label: "Chat", path: "/chat", icon: "💬" },
+  { label: "Dashboard", path: "/admin/dashboard", icon: "ðŸ“Š" },
+  { label: "Members", path: "/admin/members", icon: "ðŸ‘¥" },
+  { label: "Equipment", path: "/admin/equipment", icon: "ðŸ‹ï¸" },
+  { label: "Reports", path: "/admin/reports", icon: "ðŸ“ˆ" },
+  { label: "Scanner", path: "/admin/scanner", icon: "ðŸ”" },
+  { label: "Transactions", path: "/admin/transactions", icon: "ðŸ’°" },
+  { label: "SPK", path: "/admin/spk", icon: "ðŸ”§" },
+  { label: "Settings", path: "/admin/settings", icon: "âš™ï¸" },
+  { label: "Chat", path: "/admin/chat", icon: "ðŸ’¬" },
 ];
 
 export function AdminChatFAB() {
@@ -37,12 +37,14 @@ export function AdminChatFAB() {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!user || pathname.startsWith("/chat")) return;
+    if (!user || pathname.startsWith("/admin/chat")) return;
 
     const q = query(collection(db, "chats"), orderBy("created_at", "asc"), limit(50));
     const unsubscribe = onSnapshot(q, (snapshot) => {
       setMessages(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
       setIsLoading(false);
+    }, (error) => {
+      console.error("AdminChatFAB chats onSnapshot error:", error);
     });
     return () => unsubscribe();
   }, [user, pathname]);
@@ -52,6 +54,8 @@ export function AdminChatFAB() {
     const q = query(collection(db, "members"), orderBy("nama", "asc"));
     getDocs(q).then(snap => {
       setAllMembers(snap.docs.map(d => ({ id: d.id, nama: d.data().nama })));
+    }).catch(error => {
+      console.error("AdminChatFAB members getDocs error:", error);
     });
   }, [user]);
 
@@ -118,7 +122,7 @@ export function AdminChatFAB() {
         return (
           <button
             key={i}
-            onClick={() => router.push(`/members?search=${encodeURIComponent(memberName)}`)}
+            onClick={() => router.push(`/admin/members?search=${encodeURIComponent(memberName)}`)}
             className={cn(
               "inline-flex items-center gap-1 px-1 py-0.5 rounded-md font-black transition-all mx-0.5 whitespace-nowrap",
               isMe 
@@ -126,7 +130,7 @@ export function AdminChatFAB() {
                 : "bg-blue-500/10 text-blue-400 hover:bg-blue-500/20"
             )}
           >
-            <span className="text-[8px]">👤</span>
+            <span className="text-[8px]">ðŸ‘¤</span>
             <span className="text-[9px] uppercase tracking-tighter">{memberName}</span>
           </button>
         );
@@ -158,7 +162,7 @@ export function AdminChatFAB() {
     }
   };
 
-  if (pathname === "/login" || pathname.startsWith("/chat") || !user) return null;
+  if (pathname === "/login-admin" || pathname.startsWith("/admin/chat") || !user) return null;
 
   return (
     <>
@@ -201,7 +205,7 @@ export function AdminChatFAB() {
               </div>
               <div className="flex items-center gap-2">
                 <button
-                  onClick={() => router.push("/chat")}
+                  onClick={() => router.push("/admin/chat")}
                   className="p-2 rounded-lg hover:bg-white/5 text-gray-400 hover:text-white transition-all"
                   title="Expand to full page"
                 >
@@ -280,7 +284,7 @@ export function AdminChatFAB() {
                           onClick={() => applyMemberTag(m)}
                           className="w-full flex items-center gap-3 px-4 py-2.5 hover:bg-white/5 text-left transition-all"
                         >
-                          <span className="text-sm">👤</span>
+                          <span className="text-sm">ðŸ‘¤</span>
                           <span className="text-[10px] font-black text-foreground uppercase tracking-tight">{m.nama}</span>
                         </button>
                       ))}

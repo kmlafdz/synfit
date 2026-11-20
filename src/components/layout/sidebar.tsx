@@ -1,42 +1,48 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import Link from "@/lib/navigation";
+import { usePathname, useRouter } from "@/lib/navigation";
 import {
   Activity, LayoutDashboard, Users, CreditCard, Settings, QrCode,
   ClipboardList, X, Calendar, Dumbbell, Wrench, FileText, LogOut, ChevronLeft, Shield,
-  MessageCircle, Clock
+  MessageCircle, Clock, MessageSquare, Newspaper
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useUIStore } from "@/store/useUIStore";
 import { useAuthStore } from "@/store/useAuthStore";
 import { useLanguageStore } from "@/store/useLanguageStore";
+import { translations } from "@/lib/translations";
 import { Button } from "@/components/ui/button";
 import { auth } from "@/lib/firebase";
 import { signOut } from "firebase/auth";
 
 const menuItems = [
-  { icon: LayoutDashboard, label: "Dashboard", href: "/dashboard" },
-  { icon: MessageCircle, label: "Admin Chat", href: "/chat" },
-  { icon: Users, label: "Members", href: "/members" },
-  { icon: QrCode, label: "Daily Check-in", href: "/scanner" },
-  { icon: Calendar, label: "Check-in Log", href: "/monthly-checkin" },
-  { icon: CreditCard, label: "Transactions", href: "/transactions" },
-  { icon: Dumbbell, label: "Fitness Equipment", href: "/equipment" },
-  { icon: Wrench, label: "Maintenance", href: "/spk" },
-  { icon: FileText, label: "Reports", href: "/reports" },
-  { icon: Shield, label: "Manage User", href: "/users" },
-  { icon: Settings, label: "Settings", href: "/settings" },
+  { icon: LayoutDashboard, label: "Dashboard", translationKey: "dashboard", href: "/admin/dashboard" },
+  { icon: MessageCircle, label: "Admin Chat", translationKey: "chat", href: "/admin/chat?mode=internal" },
+  { icon: MessageSquare, label: "Customer Chat", translationKey: "chatCustomer", href: "/admin/chat?mode=member" },
+  { icon: Users, label: "Members", translationKey: "members", href: "/admin/members" },
+  { icon: QrCode, label: "Daily Check-in", translationKey: "dailyCheckin", href: "/admin/scanner" },
+  { icon: Calendar, label: "Check-in Log", translationKey: "monthlyCheckin", href: "/admin/monthly-checkin" },
+  { icon: CreditCard, label: "Transactions", translationKey: "transactions", href: "/admin/transactions" },
+  { icon: Dumbbell, label: "Fitness Equipment", translationKey: "equipment", href: "/admin/equipment" },
+  { icon: Wrench, label: "Maintenance", translationKey: "spk", href: "/admin/spk" },
+  { icon: FileText, label: "Reports", translationKey: "reports", href: "/admin/reports" },
+  { icon: Newspaper, label: "Mading & Edukasi", translationKey: "mading", href: "/admin/mading" },
+  { icon: Shield, label: "Manage User", translationKey: "users", href: "/admin/users" },
+  { icon: Settings, label: "Settings", translationKey: "settings", href: "/admin/settings" },
 ];
 
 export function Sidebar() {
   const pathname = usePathname();
   const router = useRouter();
   const { isSidebarOpen, closeSidebar } = useUIStore();
-  const { setUser } = useAuthStore();
+  const { user, setUser } = useAuthStore();
   const { language } = useLanguageStore();
   const [currentTime, setCurrentTime] = useState<Date | null>(null);
+  const [activeQueryMode, setActiveQueryMode] = useState<string | null>(null);
+
+  const t = translations[language] || {};
 
   useEffect(() => {
     setCurrentTime(new Date());
@@ -44,11 +50,18 @@ export function Sidebar() {
     return () => clearInterval(timer);
   }, []);
 
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      setActiveQueryMode(params.get("mode"));
+    }
+  }, [pathname]);
+
   const handleLogout = async () => {
     try {
       await signOut(auth);
       setUser(null);
-      router.push("/login");
+      router.push("/login-admin");
     } catch (error) {
       console.error("Logout error:", error);
     }
@@ -83,10 +96,10 @@ export function Sidebar() {
         <div className="flex h-20 items-center justify-between px-6 border-b border-transparent shrink-0 mt-2">
           <div className="flex items-center gap-3">
             <div className="bg-white/10 backdrop-blur-2xl border border-white/20 rounded-[1.25rem] p-1 shadow-2xl flex items-center justify-center w-11 h-11 overflow-hidden">
-              <img src="/logo.png" alt="Areta Logo" className="h-full w-full object-contain rounded-lg" />
+              <img src="/logo.png" alt="SynFit Logo" className="h-full w-full object-contain rounded-lg" />
             </div>
             <div className="flex flex-col">
-              <span className="text-sm font-bold text-white tracking-widest leading-none uppercase">Areta Sport</span>
+              <span className="text-sm font-bold text-white tracking-widest leading-none uppercase">SynFit</span>
               <span className="text-[10px] font-medium text-muted-foreground tracking-widest mt-1">FITNESS MGMT</span>
             </div>
           </div>
@@ -98,7 +111,20 @@ export function Sidebar() {
         {/* Menu Navigation */}
         <nav className="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
           {menuItems.map((item) => {
-            const isActive = pathname === item.href;
+            if (item.href === "/admin/users" && user?.role !== "OWNER" && user?.role !== "DEVELOPER") {
+              return null;
+            }
+            const isActive = (() => {
+              const [baseHref, queryStr] = item.href.split("?");
+              if (pathname !== baseHref) return false;
+              if (!queryStr) return !activeQueryMode || activeQueryMode === "internal";
+              const itemParams = new URLSearchParams(queryStr);
+              return itemParams.get("mode") === activeQueryMode;
+            })();
+            const label = item.translationKey && (t as any)[item.translationKey]
+              ? (t as any)[item.translationKey]
+              : item.label;
+
             return (
               <Link
                 key={item.href}
@@ -112,7 +138,7 @@ export function Sidebar() {
                 )}
               >
                 <item.icon className={cn("h-4 w-4", isActive ? "text-orange-500" : "text-gray-400")} />
-                <span>{item.label}</span>
+                <span>{label}</span>
               </Link>
             );
           })}
@@ -136,7 +162,7 @@ export function Sidebar() {
               </div>
             </div>
           )}
-          <p className="text-[9px] font-black text-gray-600 tracking-widest uppercase text-center pt-2">Version 1.0.0 — SynTriad Team</p>
+          <p className="text-[9px] font-black text-gray-600 tracking-widest uppercase text-center pt-2">Version 1.0.0 â€¢ SynTriad Team</p>
         </div>
       </aside>
     </>

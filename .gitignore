@@ -67,9 +67,10 @@ node_modules/
 .env*.local
 .env.local
 
-# next.js build output
+# build output
 .next/
 out/
+dist/
 tsconfig.tsbuildinfo
 
 # compiled APKs or binaries

@@ -1,17 +1,87 @@
 {
-  "name": "Areta Fitness Management",
-  "short_name": "Areta",
-  "description": "Enterprise-grade fitness management system",
-  "start_url": "/dashboard/",
-  "display": "standalone",
-  "background_color": "#0a0a0a",
-  "theme_color": "#ea580c",
+  "name": "SynFit",
+  "short_name": "SynFit",
+  "description": "Smart Fitness Club & AI Workout Coach - Akses kartu member digital, AI Form Coach, telemetri smartwatch, dan jadwal latihan langsung dari layar utama smartphone Anda.",
+  "start_url": "/?source=pwa",
+  "scope": "/",
+  "id": "/?source=pwa",
+  "display": "fullscreen",
+  "display_override": [
+    "fullscreen",
+    "standalone",
+    "window-controls-overlay"
+  ],
   "orientation": "portrait-primary",
+  "background_color": "#08080d",
+  "theme_color": "#08080d",
+  "categories": [
+    "fitness",
+    "health",
+    "sports",
+    "lifestyle"
+  ],
   "icons": [
     {
-      "src": "/favicon.ico",
-      "sizes": "64x64",
-      "type": "image/x-icon"
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-maskable-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Member Dashboard",
+      "short_name": "Dashboard",
+      "description": "Buka dashboard member & kartu digital",
+      "url": "/member/dashboard",
+      "icons": [
+        {
+          "src": "/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "AI Form Coach",
+      "short_name": "AI Coach",
+      "description": "Mulai latihan dengan analisis kamera AI & detak jantung",
+      "url": "/member/dashboard?tab=coach",
+      "icons": [
+        {
+          "src": "/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
     }
   ]
 }

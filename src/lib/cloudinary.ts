@@ -1,11 +1,11 @@
-/**
+﻿/**
  * Utility to upload images to Cloudinary via Unsigned Upload
  * Note: Values are currently set directly to bypass environment loading issues.
  */
 export async function uploadToCloudinary(file: File | Blob): Promise<string | null> {
   // Using direct values as backup for env variables
   const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME || "ddozkcgfm";
-  const uploadPreset = process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET || "areta_preset";
+  const uploadPreset = process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET || "synfit_preset";
 
   if (!cloudName || !uploadPreset || cloudName === "your_cloud_name") {
     console.error("Cloudinary configuration missing.");
